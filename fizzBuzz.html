@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FizzBuzz</title>
+</head>
+<body>
+    <form id = "bruh">
+        <label>Enter a number: <input id="number" type="text"></label>
+        <input type="submit" onclick="fizzBuzz()">
+    </form>
+    <div id="result-fizz-buzz"></div>
+    <script>
+        document.getElementById("bruh").onkeydown = function(e){
+            if(e.keyCode == 13){
+                e.preventDefault();
+                fizzBuzz();
+            }
+        };
+
+
+        function fizzBuzz(){
+            let arr = [];
+            let num = parseInt(document.getElementById("number").value);
+            let parsed = '';
+            for(i = 1; i<=num; i++){
+                arr[i-1] = String(i);
+                if(i%3 == 0 && i%5 == 0){
+                    arr[i-1] = "Fizz-Bang"
+                }
+                else if(i%3 == 0){
+                    arr[i-1] = "Fizz";
+                }
+                else if(i%5 == 0){
+                    arr[i-1] = "Buzz";
+                }
+                
+            }
+            for(i=0; i< arr.length; i++){
+                if(i==arr.length-1){
+                    parsed += arr[i];
+                }
+                else{
+                    parsed += arr[i] + ", ";
+                }
+            }
+            console.log(parsed);
+            document.getElementById("result-fizz-buzz").innerHTML = parsed;
+
+        }
+    </script>
+</body>
+</html>
